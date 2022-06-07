@@ -17,3 +17,14 @@ vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, in
     return ans;
 	// Write your code here.
 }
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int  i = n-- + m-- -1;
+        while(n>=0){
+            if(m == -1 or nums2[n]>=nums1[m]) nums1[i--] = nums2[n--];
+            else nums1[i--] = nums1[m--];
+        }
+    }
+};
