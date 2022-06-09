@@ -33,3 +33,26 @@ public:
         return ans;
     }
 };
+
+#include <bits/stdc++.h> 
+string fourSum(vector<int> arr, int target, int n) {
+    //
+    unordered_map<int,pair<int,int>>mpp;
+    for(int i = 0;i<n;i++){
+        for(int j = i+1;j<n;j++){
+            mpp[arr[i]+arr[j]] = {i,j};
+        }
+    }
+    for(int i = 0;i<n;i++){
+        for(int j = i+1;j<n;j++){
+            int val = arr[i]+arr[j];
+            if(mpp.find(target-val)!= mpp.end()){
+                pair<int,int>p = mpp[target-val];
+                if((p.first!=i and p.second!=j ) and (p.first!=j and p.second!=i))return "Yes";
+            }
+        }
+    }
+        return "No";
+    // Write your code here.
+}
+
